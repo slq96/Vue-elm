@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#myCanvas{
+				border: 3px solid black;
+				margin: 0 auto;
+				display: block;
+			}
+		</style>
+	</head>
+	<body>
+		<!--canvas：画布  使用来绘制图形的，最终以图片的形式显示在浏览器上；默认宽高 300/150-->
+		<canvas id="myCanvas" width="600" height="600">
+			当前浏览器不兼容canvas
+		</canvas>
+	</body>
+	<script type="text/javascript">
+//	   处理canvas图形绘制的过程
+	//1.获取画布对象
+	var canvas = document.getElementById("myCanvas");
+	//2.获取绘制环境上下文 --- canvas的画笔
+	var context = canvas.getContext("2d");
+	context.fillStyle = "red";
+     context.fillRect(0,0,100,100);
+     //平移
+     context.translate(200,200);
+     //旋转
+     var deg = Math.PI/180;
+     var a = 0;
+     function rotate(){
+     	context.clearRect(-200,-200,canvas.width,canvas.height);
+     	context.save();
+     a++;
+     context.rotate(a*deg);
+     context.fillStyle = "blue";
+     context.fillRect(-50,-50,100,100);
+     context.restore();
+     }
+     setInterval(rotate,5);
+     
+	</script>
+	
+</html>
